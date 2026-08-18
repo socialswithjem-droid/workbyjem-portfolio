@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./updates.css";
 
 export const metadata: Metadata = {
   title: "Jemarie Adame | Digital Marketing & AI-Assisted Web",

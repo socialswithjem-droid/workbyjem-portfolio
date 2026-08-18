@@ -19,15 +19,22 @@ export default function Home() {
       <section className="work shell" id="work">
         <div className="sectionHead"><div><small>01 / SELECTED WORK</small><h2>Built from a real<br />business need.</h2></div><p>I&apos;m growing through hands-on projects: defining the problem, shaping the workflow, guiding AI tools, and testing what gets built.</p></div>
         <article className="caseCard">
-          <div className="caseVisual"><div className="window"><div className="windowTop"><b>botika<span>POS</span></b><span>Pharmacy dashboard</span></div><div className="dashboard"><aside><i /><i /><i /><i /><i /></aside><div className="dashBody"><p>Overview</p><div className="metrics"><i /><i /><i /></div><div className="chart"><b /><b /><b /><b /><b /><b /><b /></div></div></div></div></div>
+          <div className="caseVisual">
+            <img className="dashboardShot" src="/botikapos-dashboard.png" alt="BotikaPOS pharmacy dashboard showing sales, transactions, customers, profit, stock, expiry alerts, and a seven-day sales graph" />
+            <img className="promoShot" src="/botikapos-promo.png" alt="SVN Tech BotikaPOS promotional graphic showing pharmacy checkout, inventory, and analytics features" />
+            <div className="analyticsFloat">
+              <div className="donut" aria-label="Customer type analytics illustration"><span>3</span></div>
+              <div><small>ANALYTICS VIEW</small><strong>Sales by customer type</strong><p>Regular · Senior · PWD</p></div>
+            </div>
+          </div>
           <div className="caseCopy"><div className="status">COMPLETED PROJECT</div><h3>BotikaPOS</h3><p>A pharmacy-focused point-of-sale concept designed to make everyday sales and inventory workflows simpler.</p><div className="role"><small>MY ROLE</small><p>Requirements · Workflow planning · AI-assisted implementation · Testing & iteration</p></div><div className="honesty"><strong>Built transparently with AI</strong><br />I used Claude Code and Codex as development tools. I directed the build, reviewed the output, tested workflows, and refined the product.</div></div>
         </article>
       </section>
       <section className="roadmap shell">
         <div className="sectionHead compact"><div><small>02 / EXPLORING NEXT</small><h2>Ideas in the<br /><em>workshop.</em></h2></div><p>These are future concepts—not finished products yet. I&apos;m interested in learning how different businesses work, then building tools around their real needs.</p></div>
         <div className="ideaGrid">
-          <article><span>01</span><div className="ideaIcon">◌</div><h3>Piggery Management</h3><p>A practical system concept for tracking animals, feed, health records, expenses, and farm performance.</p><small>CONCEPT / RESEARCH STAGE</small></article>
-          <article><span>02</span><div className="ideaIcon">⌁</div><h3>Simple CRM</h3><p>A customizable customer hub for leads, follow-ups, notes, and a clearer sales pipeline.</p><small>CONCEPT / ROADMAP</small></article>
+          <article className="activeIdea"><span>01</span><div className="ideaIcon">◌</div><h3>Piggery Management</h3><p>A practical system for tracking animals, feed, health records, expenses, and farm performance.</p><small>CURRENTLY BEING BUILT</small></article>
+          <article className="activeIdea"><span>02</span><div className="ideaIcon">⌁</div><h3>Simple CRM</h3><p>A customizable customer hub for leads, follow-ups, notes, and a clearer sales pipeline.</p><small>ONGOING PROJECT</small></article>
           <article className="openIdea"><span>03</span><div className="ideaIcon">+</div><h3>Your business need</h3><p>I&apos;m open to shaping a focused tool around a clear workflow—with honest scope, feedback, and testing.</p><small>OPEN FOR COLLABORATION</small></article>
         </div>
       </section>
@@ -41,7 +48,7 @@ export default function Home() {
         </div>
       </section>
       <section className="about shell" id="about"><div className="aboutMark">J<span>A</span></div><div className="aboutCopy"><small>04 / ABOUT ME</small><h2>Curious enough to learn.<br /><em>Practical enough to ship.</em></h2><p>My foundation is digital and email marketing. Building BotikaPOS showed me that I can go further—using AI tools to explore, prototype, test, and turn an operational idea into something tangible.</p><p>I don&apos;t pretend AI had no part in my process. I see it as a tool I&apos;m learning to direct responsibly while I continue strengthening my technical skills.</p><div className="values"><span><b>Clear</b> communication</span><span><b>Honest</b> capabilities</span><span><b>Curious</b> problem-solving</span></div></div></section>
-      <footer id="contact"><div className="shell footerInner"><small>HAVE A PROJECT OR ROLE IN MIND?</small><h2>Let&apos;s make something<br /><em>useful together.</em></h2><a className="contactButton" href="mailto:hello@example.com">Start a conversation <Arrow /></a><div className="footerBottom"><span>© 2026 Jemarie Adame</span><span>Digital marketing · Email · AI-assisted web</span><a href="#top">Back to top ↑</a></div></div></footer>
+      <footer id="contact"><div className="shell footerInner"><small>HAVE A PROJECT OR ROLE IN MIND?</small><h2>Let&apos;s make something<br /><em>useful together.</em></h2><div className="contactLinks"><a className="contactButton" href="mailto:socialswithjem@gmail.com">Email me <Arrow /></a><a className="contactButton outline" href="https://wa.me/639926348536" target="_blank" rel="noreferrer">WhatsApp <Arrow /></a></div><div className="directContact"><a href="mailto:socialswithjem@gmail.com">socialswithjem@gmail.com</a><a href="https://wa.me/639926348536" target="_blank" rel="noreferrer">0992 634 8536</a></div><div className="footerBottom"><span>© 2026 Jemarie Adame</span><span>Digital marketing · Email · AI-assisted web</span><a href="#top">Back to top ↑</a></div></div></footer>
     </main>
   );
 }
