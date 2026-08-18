@@ -17,8 +17,9 @@
 .dashboardShot {
   width: 100%;
   min-height: 350px;
-  object-fit: cover;
-  object-position: 28% top;
+  object-fit: contain;
+  object-position: center;
+  background: white;
   border: 9px solid white;
   border-radius: 18px;
   box-shadow: 0 28px 65px rgba(16, 24, 20, .22);
