@@ -83,6 +83,13 @@
 .crmChart i { flex: 1; height: 35%; background: #19764b; }
 .crmChart i:nth-child(2) { height: 75%; }.crmChart i:nth-child(3) { height: 52%; }.crmChart i:nth-child(4) { height: 90%; }.crmChart i:nth-child(5) { height: 66%; }
 .buildBadge { position: absolute; right: 7px; bottom: 7px; padding: 4px 6px; color: white; background: #101814; border-radius: 3px; font-size: 6px; font-weight: 800; letter-spacing: .7px; }
+.marquee { overflow: hidden; padding: 18px 0; color: white; background: var(--ink); border-top: 1px solid #2c3832; border-bottom: 1px solid #2c3832; }
+.marqueeTrack { display: flex; width: max-content; animation: marqueeMove 32s linear infinite; }
+.marqueeTrack span { flex: none; padding-right: 28px; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; white-space: nowrap; }
+.marqueeTrack b { padding: 0 17px; color: var(--lime); font-weight: 400; }
+.marquee:hover .marqueeTrack { animation-play-state: paused; }
+@keyframes marqueeMove { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marqueeTrack { animation: none; } }
 .contactLinks { display: flex; flex-wrap: wrap; gap: 12px; }
 .contactButton.outline { color: white; background: transparent; border: 1px solid #718078; }
 .directContact { display: flex; gap: 28px; margin-top: 24px; }

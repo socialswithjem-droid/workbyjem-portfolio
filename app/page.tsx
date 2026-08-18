@@ -13,6 +13,12 @@ export default function Home() {
         <h1>Marketing ideas,<br /><em>made real.</em></h1>
         <div className="heroBottom"><p>I&apos;m Jemarie—a digital and email marketer who also uses AI-assisted development to turn business ideas into useful web experiences.</p><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
       </section>
+      <div className="marquee" aria-label="Services: Digital marketing, email marketing, landing pages, AI-assisted web building, custom business systems, and website support">
+        <div className="marqueeTrack">
+          <span>DIGITAL MARKETING <b>✦</b> EMAIL MARKETING <b>✦</b> LANDING PAGES <b>✦</b> AI-ASSISTED WEB BUILDING <b>✦</b> CUSTOM BUSINESS SYSTEMS <b>✦</b> WEBSITE SUPPORT <b>✦</b></span>
+          <span aria-hidden="true">DIGITAL MARKETING <b>✦</b> EMAIL MARKETING <b>✦</b> LANDING PAGES <b>✦</b> AI-ASSISTED WEB BUILDING <b>✦</b> CUSTOM BUSINESS SYSTEMS <b>✦</b> WEBSITE SUPPORT <b>✦</b></span>
+        </div>
+      </div>
       <section className="proof shell" aria-label="My focus areas">
         <p>WHAT I BRING</p><div className="proofGrid"><span>Digital<br />marketing</span><span>Email<br />campaigns</span><span>Landing pages<br />& web support</span><span>AI-assisted<br />building</span></div>
       </section>
