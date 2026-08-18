@@ -26,7 +26,7 @@ export default function Home() {
         <div className="sectionHead"><div><small>01 / SELECTED WORK</small><h2>Built from a real<br />business need.</h2></div><p>I&apos;m growing through hands-on projects: defining the problem, shaping the workflow, guiding AI tools, and testing what gets built.</p></div>
         <article className="caseCard">
           <div className="caseVisual">
-            <img className="dashboardShot" src="/botikapos-dashboard.png" alt="BotikaPOS pharmacy dashboard showing sales, transactions, customers, profit, stock, expiry alerts, and a seven-day sales graph" />
+            <img className="dashboardShot" src="/botikapos-macbook-dashboard-v2.png" alt="BotikaPOS pharmacy dashboard displayed in a MacBook mockup, showing sales, transactions, customers, profit, inventory status, and analytics" />
             <img className="promoShot" src="/botikapos-promo.png" alt="SVN Tech BotikaPOS promotional graphic showing pharmacy checkout, inventory, and analytics features" />
             <div className="analyticsFloat">
               <div className="donut" aria-label="Customer type analytics illustration"><span>3</span></div>
