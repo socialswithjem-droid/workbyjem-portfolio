@@ -11,7 +11,7 @@ export default function Home() {
       <section className="hero shell" id="top">
         <div className="eyebrow"><i /> Available for remote opportunities</div>
         <h1>Marketing ideas,<br /><em>made real.</em></h1>
-        <div className="heroBottom"><p>I&apos;m Jemarie—a digital and email marketer who also uses AI-assisted development to turn business ideas into useful web experiences.</p><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
+        <div className="heroBottom"><div className="heroIntro"><span>DIGITAL + TECHNICAL</span><p>I&apos;m Jemarie—a digital and email marketer who uses <strong>AI-assisted development</strong> to turn business ideas into useful web experiences.</p><div className="introMeta"><i /> Strategy to working experience</div></div><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
       </section>
       <div className="marquee" aria-label="Services: Digital marketing, email marketing, landing pages, AI-assisted web building, custom business systems, and website support">
         <div className="marqueeTrack">
@@ -20,7 +20,7 @@ export default function Home() {
         </div>
       </div>
       <section className="proof shell" aria-label="My focus areas">
-        <p>WHAT I BRING</p><div className="proofGrid"><span>Digital<br />marketing</span><span>Email<br />campaigns</span><span>Landing pages<br />& web support</span><span>AI-assisted<br />building</span></div>
+        <div className="proofTitle"><p>WHAT I BRING</p><span>Four connected capabilities, one practical workflow.</span></div><div className="proofGrid"><article><small>01</small><b>Digital marketing</b><p>Campaign support, content, research, and performance tracking.</p></article><article><small>02</small><b>Email campaigns</b><p>Newsletters, customer journeys, automation, testing, and reporting.</p></article><article><small>03</small><b>Landing pages</b><p>Conversion-focused pages, forms, updates, and website support.</p></article><article><small>04</small><b>AI-assisted building</b><p>Transparent prototyping and practical tools shaped around real needs.</p></article></div>
       </section>
       <section className="work shell" id="work">
         <div className="sectionHead"><div><small>01 / SELECTED WORK</small><h2>Built from a real<br />business need.</h2></div><p>I&apos;m growing through hands-on projects: defining the problem, shaping the workflow, guiding AI tools, and testing what gets built.</p></div>
