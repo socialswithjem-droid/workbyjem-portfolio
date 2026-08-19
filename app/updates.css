@@ -111,6 +111,23 @@
 .proofGrid article small { color: var(--green); font-size: 9px; font-weight: 800; letter-spacing: 1px; }
 .proofGrid article b { margin: auto 0 14px; font-family: Georgia,"Times New Roman",serif; font-size: 23px; font-weight: 400; line-height: 1.05; }
 .proofGrid article p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+.about { align-items: start; }
+.aboutPortrait { position: sticky; top: 30px; display: grid; place-items: center; min-height: 500px; padding: 55px 25px 30px; overflow: hidden; background: linear-gradient(145deg,#dff5e6,#f8faf8); border: 1px solid var(--line); }
+.aboutPortrait::before { content: ""; position: absolute; width: 300px; height: 300px; border: 1px solid rgba(25,118,75,.18); border-radius: 50%; }
+.aboutPortrait .aboutMark { position: relative; z-index: 1; }
+.aboutPortrait small { align-self: end; position: relative; z-index: 1; color: #607068; font-size: 8px; letter-spacing: 1.2px; }
+.aboutCopy h2 { margin-bottom: 42px; }
+.aboutStory { padding: 30px 0 34px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.aboutCopy .aboutStory p { max-width: 680px; margin: 0 0 20px; font-size: 16px; line-height: 1.72; }
+.aboutCopy .aboutStory p:last-child { margin-bottom: 0; }
+.aboutCopy .aboutStory .aboutLead { color: #22302a; font-family: Georgia,"Times New Roman",serif; font-size: 22px; line-height: 1.5; }
+.aboutLead strong { color: var(--green); font-weight: 400; }
+.workLabel { margin: 32px 0 16px; color: var(--green); font-size: 9px; font-weight: 800; letter-spacing: 1.5px; }
+.aboutCopy .values { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 0; padding: 0; border: 0; }
+.values article { min-height: 180px; display: flex; flex-direction: column; padding: 18px; background: white; border: 1px solid var(--line); }
+.values article span { color: var(--green); font-size: 8px; font-weight: 800; }
+.values article b { margin-top: auto; font-family: Georgia,"Times New Roman",serif; font-size: 17px; font-weight: 400; }
+.values article p { margin: 9px 0 0; color: var(--muted); font-size: 9px; line-height: 1.5; }
 .marquee { overflow: hidden; padding: 18px 0; color: white; background: var(--ink); border-top: 1px solid #2c3832; border-bottom: 1px solid #2c3832; }
 .marqueeTrack { display: flex; width: max-content; animation: marqueeMove 26s linear infinite; will-change: transform; }
 .marqueeTrack span { flex: none; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; white-space: nowrap; }
@@ -136,6 +153,9 @@
   .proofTitle span { display: block; margin-top: 9px; }
   .proof .proofGrid { grid-template-columns: 1fr 1fr; }
   .proofGrid article { min-height: 175px; }
+  .aboutPortrait { position: relative; top: auto; min-height: 310px; }
+  .aboutCopy .values { grid-template-columns: 1fr; }
+  .values article { min-height: 135px; }
 }
 
 @media (max-width: 480px) {
