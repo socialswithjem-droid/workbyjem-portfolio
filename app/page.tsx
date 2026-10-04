@@ -24,7 +24,7 @@ export default function Home() {
         <div className="proofTitle"><p>WHAT I BRING</p><span>Five connected capabilities, one practical workflow.</span></div><div className="proofGrid"><article><small>01</small><b>Digital marketing</b><p>Campaign support, content, research, and performance tracking.</p></article><article><small>02</small><b>Email campaigns</b><p>Newsletters, customer journeys, automation, testing, and reporting.</p></article><article><small>03</small><b>Websites & landing pages</b><p>WordPress, conversion-focused pages, forms, content updates, QA, and web support.</p></article><article><small>04</small><b>AI-assisted building</b><p>Transparent prototyping and practical tools shaped around real needs.</p></article><article><small>05</small><b>GHL CRM support</b><p>Contacts, pipelines, forms, calendars, workflows, testing, and customization.</p></article></div>
       </section>
       <section className="work shell" id="work">
-        <div className="sectionHead"><div><small>01 / SELECTED WORK</small><h2>Built from a real<br />business need.</h2></div><p>I&apos;m growing through hands-on projects: defining the problem, shaping the workflow, guiding AI tools, and testing what gets built.</p></div>
+        <div className="sectionHead"><div><small>01 / SELECTED WORK</small><h2>Built around real<br />business needs.</h2></div><p>A mix of original projects and clearly credited client contributions—showing what I built, what I improved, and where I supported an existing website.</p></div>
         <article className="caseCard">
           <div className="caseVisual">
             <img className="dashboardShot" src="/botikapos-macbook-dashboard-v2.png" alt="BotikaPOS pharmacy dashboard displayed in a MacBook mockup, showing sales, transactions, customers, profit, inventory status, and analytics" />
@@ -35,6 +35,11 @@ export default function Home() {
             </div>
           </div>
           <div className="caseCopy"><div className="status">COMPLETED PROJECT</div><h3>BotikaPOS</h3><p>A pharmacy-focused point-of-sale concept designed to make everyday sales and inventory workflows simpler.</p><div className="role"><small>MY ROLE</small><p>Requirements · Workflow planning · AI-assisted implementation · Testing & iteration</p></div><div className="honesty"><strong>Built transparently with AI</strong><br />I used Claude Code and Codex as development tools. I directed the build, reviewed the output, tested workflows, and refined the product.</div></div>
+        </article>
+        <article className="contributionCard">
+          <div className="contributionIndex"><span>02</span><small>CLIENT WEBSITE CONTRIBUTION</small></div>
+          <div className="contributionMain"><div className="statusLine"><i /> WEBSITE ENHANCEMENT SUPPORT</div><h3>Prop Search</h3><p>I supported an existing WordPress/Elementor website by polishing selected areas and improving practical details for visitors.</p><div className="contributionTags"><span>Header updates</span><span>Footer updates</span><span>Image changes</span><span>Contact links</span><span>Layout polishing</span></div></div>
+          <aside><strong>My contribution</strong><p>Website editing, content and image updates, footer/contact improvements, link setup, alignment fixes, and final presentation checks.</p><div className="creditNote"><b>Clear credit</b><br />The original website design and build were created by others. My role was focused on updates and refinement—not claiming the full project as my own.</div></aside>
         </article>
       </section>
       <section className="roadmap shell">
