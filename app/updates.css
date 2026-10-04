@@ -96,22 +96,26 @@
 .customTags { display: flex; flex-wrap: wrap; gap: 5px; margin: 12px 0 16px; }
 .customTags span { padding: 5px 7px; color: #355044; background: rgba(255,255,255,.7); border: 1px solid #bdd6c6; border-radius: 20px; font-size: 8px; }
 .ideaCta { display: inline-flex; align-self: flex-start; margin-bottom: 22px; padding-bottom: 4px; color: #17201d; border-bottom: 1px solid #17201d; font-size: 11px; font-weight: 800; text-decoration: none; }
-.heroIntro { position: relative; isolation: isolate; width: min(590px,100%); padding: 32px 34px 28px 38px; overflow: hidden; border: 1px solid rgba(25,118,75,.23); border-left: 4px solid var(--green); background: rgba(249,252,249,.9); box-shadow: 0 18px 55px rgba(16,24,20,.09); }
-.heroIntro::after { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .36; background-image: linear-gradient(rgba(25,118,75,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(25,118,75,.12) 1px,transparent 1px); background-size: 30px 30px; mask-image: linear-gradient(90deg,transparent 8%,black 48%,black); animation: introGrid 13s linear infinite; }
-.heroIntro>span,.heroIntro>p,.heroIntro>.introMeta { position: relative; z-index: 2; }
+.hero { position: relative; isolation: isolate; }
+.hero::before { content: ""; position: absolute; z-index: -2; top: 26px; right: calc((100vw - 100%) / -2); bottom: 22px; left: calc((100vw - 100%) / -2); overflow: hidden; border-top: 1px solid rgba(25,118,75,.12); border-bottom: 1px solid rgba(25,118,75,.12); background-color: #f3f7f2; background-image: linear-gradient(rgba(25,118,75,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(25,118,75,.075) 1px,transparent 1px); background-size: 54px 54px; animation: heroGridMove 20s linear infinite; }
+.heroScene { position: absolute; z-index: -1; top: 26px; right: calc((100vw - 100%) / -2); bottom: 22px; left: calc((100vw - 100%) / -2); overflow: hidden; pointer-events: none; }
+.heroScene i { position: absolute; display: block; border: 1px solid rgba(25,118,75,.22); border-radius: 50%; animation: heroFloat 11s ease-in-out infinite alternate; }
+.heroScene i:nth-child(1) { top: 8%; right: 7%; width: 330px; height: 330px; }
+.heroScene i:nth-child(2) { top: 18%; right: 12%; width: 205px; height: 205px; animation-delay: -4s; }
+.heroScene i:nth-child(3) { bottom: -135px; left: 5%; width: 270px; height: 270px; animation-delay: -7s; }
+.heroScene b { position: absolute; display: block; border-radius: 50%; filter: blur(62px); opacity: .18; background: #3ca56b; animation: heroGlow 9s ease-in-out infinite alternate; }
+.heroScene b:nth-of-type(1) { top: -120px; left: 18%; width: 340px; height: 340px; }
+.heroScene b:nth-of-type(2) { right: 4%; bottom: -90px; width: 310px; height: 310px; background: var(--lime); animation-delay: -5s; }
+.heroScene span { position: absolute; color: #6b9f39; font-size: 16px; animation: heroTwinkle 4s ease-in-out infinite alternate; }
+.heroScene span:nth-of-type(1) { top: 20%; left: 7%; }
+.heroScene span:nth-of-type(2) { right: 32%; bottom: 16%; animation-delay: -2s; }
+.heroIntro { position: relative; width: min(590px,100%); padding: 30px 34px 27px 38px; border: 1px solid rgba(25,118,75,.2); border-left: 4px solid var(--green); background: rgba(255,255,255,.8); box-shadow: 0 18px 55px rgba(16,24,20,.09); backdrop-filter: blur(10px); }
 .heroIntro>span { display: block; margin-bottom: 13px; color: var(--green); font-size: 9px; font-weight: 800; letter-spacing: 1.7px; }
 .heroBottom .heroIntro p { max-width: 500px; font-family: Georgia,"Times New Roman",serif; font-size: 22px; line-height: 1.45; }
-.introBackdrop { position: absolute; z-index: -1; inset: 0; overflow: hidden; pointer-events: none; }
-.introBackdrop i { position: absolute; width: 120px; height: 120px; border: 1px solid rgba(25,118,75,.2); border-radius: 50%; animation: introOrbit 9s ease-in-out infinite alternate; }
-.introBackdrop i:nth-child(1) { top: -68px; right: 48px; }
-.introBackdrop i:nth-child(2) { right: -48px; bottom: -55px; width: 165px; height: 165px; animation-delay: -3s; }
-.introBackdrop i:nth-child(3) { top: 48%; right: 24%; width: 12px; height: 12px; border: 0; background: var(--lime); box-shadow: 0 0 28px rgba(200,244,90,.75); animation-delay: -6s; }
-.introBackdrop b { position: absolute; width: 150px; height: 150px; border-radius: 50%; filter: blur(38px); opacity: .17; background: #39a468; animation: introGlow 8s ease-in-out infinite alternate; }
-.introBackdrop b:nth-of-type(1) { top: -70px; right: -20px; }
-.introBackdrop b:nth-of-type(2) { bottom: -110px; left: 42%; width: 190px; height: 190px; animation-delay: -4s; }
-@keyframes introGrid { to { background-position: 30px 30px,30px 30px; } }
-@keyframes introOrbit { to { transform: translate3d(-18px,14px,0) scale(1.08); } }
-@keyframes introGlow { to { transform: translate3d(22px,-12px,0) scale(1.18); opacity: .28; } }
+@keyframes heroGridMove { to { background-position: 54px 54px,54px 54px; } }
+@keyframes heroFloat { to { transform: translate3d(-22px,18px,0) scale(1.06); } }
+@keyframes heroGlow { to { transform: translate3d(35px,-20px,0) scale(1.15); opacity: .28; } }
+@keyframes heroTwinkle { to { transform: rotate(35deg) scale(1.45); opacity: .35; } }
 .heroIntro p strong { color: var(--green); font-weight: 400; }
 .introMeta { margin-top: 17px; color: #65716b; font-size: 10px; letter-spacing: .5px; }
 .introMeta i { display: inline-block; width: 26px; height: 1px; margin: 0 8px 3px 0; background: var(--green); }
@@ -151,7 +155,7 @@
 .marqueeTrack b { padding: 0 17px; color: var(--lime); font-weight: 400; }
 .marquee:hover .marqueeTrack { animation-play-state: paused; }
 @keyframes marqueeMove { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .marqueeTrack { animation-duration: 60s; } .heroIntro::after,.introBackdrop i,.introBackdrop b { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .marqueeTrack { animation-duration: 60s; } .hero::before,.heroScene i,.heroScene b,.heroScene span { animation: none; } }
 .contactLinks { display: flex; flex-wrap: wrap; gap: 12px; }
 .contactButton.outline { color: white; background: transparent; border: 1px solid #718078; }
 .directContact { display: flex; gap: 28px; margin-top: 24px; }
@@ -165,7 +169,9 @@
   .donut { flex-basis: 56px; height: 56px; }
   .donut::after { width: 33px; height: 33px; }
   .heroIntro { padding: 22px 20px 20px 25px; }
-  .heroIntro::after { background-size: 24px 24px; }
+  .hero::before { background-size: 38px 38px; }
+  .heroScene i:nth-child(1) { right: -120px; width: 250px; height: 250px; }
+  .heroScene i:nth-child(2) { right: -55px; width: 150px; height: 150px; }
   .heroBottom .heroIntro p { font-size: 18px; }
   .proofTitle { display: block; }
   .proofTitle span { display: block; margin-top: 9px; }
