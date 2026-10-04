@@ -63,6 +63,8 @@ body { font-family: var(--sans); }
 .analyticsFloat small { display: block; margin-bottom: 5px; font-size: 8px; letter-spacing: 1px; color: #718078; }
 .analyticsFloat strong { display: block; font-family: var(--serif); font-size: 15px; }
 .analyticsFloat p { margin: 5px 0 0; font-size: 9px; color: #718078; }
+.caseLink { align-self: flex-start; margin-top: 20px; padding-bottom: 4px; color: var(--lime); border-bottom: 1px solid currentColor; font-size: 13px; font-weight: 700; text-decoration: none; transition: color .25s ease,border-color .25s ease; }
+.caseLink:hover,.caseLink:focus-visible { color: white; border-color: white; }
 .donut { flex: 0 0 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(#19764b 0 61%, #44aa75 61% 88%, #c99212 88%); position: relative; }
 .donut::after { content: ""; position: absolute; width: 41px; height: 41px; border-radius: 50%; background: white; }
 .donut span { position: relative; z-index: 1; font-weight: 800; font-size: 13px; }
@@ -135,7 +137,7 @@ body { font-family: var(--sans); }
 .roadmap .sectionHead small,.roadmap .sectionHead h2 { color: white; }
 .roadmap .sectionHead>p { color: #c6d4cc; }
 .roadmap .sectionHead h2 em { color: var(--lime); }
-.roadmap .ideaGrid { border-top-color: rgba(255,255,255,.35); }
+.roadmap .ideaGrid { grid-template-columns: repeat(2,1fr); border-top-color: rgba(255,255,255,.35); }
 .roadmap .ideaGrid article { background: #f8faf8; }
 .roadmap .ideaGrid .openIdea { background: #e1eadf; }
 .proof .proofGrid { grid-template-columns: repeat(5,1fr); gap: 10px; margin-top: 28px; }
@@ -143,6 +145,9 @@ body { font-family: var(--sans); }
 .proofGrid article::after { content: ""; position: absolute; right: -35px; bottom: -45px; width: 100px; height: 100px; border: 1px solid rgba(25,118,75,.2); border-radius: 50%; transition: transform .35s ease,background-color .35s ease; }
 .proofGrid article:hover { z-index: 2; transform: translateY(-10px) scale(1.035); color: white; background: var(--green); border-color: var(--green); box-shadow: 0 24px 45px rgba(16,61,40,.2); }
 .proofGrid article:hover::after { transform: scale(1.4); background: rgba(200,244,90,.16); }
+.cardTop { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.cardIcon { flex: none; width: 30px; height: 30px; color: var(--green); transition: color .3s ease,transform .3s ease; }
+.proofGrid article:hover .cardIcon { color: var(--lime); transform: translateY(-2px) rotate(-4deg); }
 .proofGrid article small { position: relative; z-index: 1; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 1.2px; transition: color .3s ease; }
 .proofGrid article b { position: relative; z-index: 1; margin: auto 0 14px; font-size: 24px; font-weight: 500; line-height: 1.05; }
 .proofGrid article p { position: relative; z-index: 1; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; transition: color .3s ease; }
@@ -194,6 +199,8 @@ body { font-family: var(--sans); }
 .values article::before { content: ""; position: absolute; top: -36px; right: -36px; width: 90px; height: 90px; border-radius: 50%; background: rgba(200,244,90,.2); transition: transform .35s ease; }
 .values article:hover { transform: translateY(-8px) scale(1.025); color: white; background: var(--ink); border-color: var(--ink); box-shadow: 0 22px 42px rgba(16,24,20,.18); }
 .values article:hover::before { transform: scale(1.5); }
+.values .cardIcon { width: 28px; height: 28px; }
+.values article:hover .cardIcon { color: var(--lime); transform: translateY(-2px) scale(1.06); }
 .values article span { position: relative; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 1.2px; transition: color .3s ease; }
 .values article b { position: relative; margin-top: auto; font-size: 21px; font-weight: 500; line-height: 1.1; }
 .values article p { position: relative; margin: 11px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; transition: color .3s ease; }
@@ -216,6 +223,7 @@ body { font-family: var(--sans); }
 }
 
 @media (max-width: 800px) {
+  .roadmap .ideaGrid { grid-template-columns: 1fr; }
   .caseVisual { min-height: 480px; padding: 30px 18px 105px; }
   .dashboardShot { min-height: 300px; }
   .promoShot { width: 105px; height: 130px; left: 27px; bottom: 26px; }
