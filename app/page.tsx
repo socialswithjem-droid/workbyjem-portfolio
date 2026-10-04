@@ -44,11 +44,6 @@ export default function Home() {
         <article className="caseCard">
           <div className="caseVisual">
             <img className="dashboardShot" src="/botikapos-macbook-dashboard-v2.png" alt="BotikaPOS pharmacy dashboard displayed in a MacBook mockup, showing sales, transactions, customers, profit, inventory status, and analytics" />
-            <img className="promoShot" src="/botikapos-promo.png" alt="SVN Tech BotikaPOS promotional graphic showing pharmacy checkout, inventory, and analytics features" />
-            <div className="analyticsFloat">
-              <div className="donut" aria-label="Customer type analytics illustration"><span>3</span></div>
-              <div><small>ANALYTICS VIEW</small><strong>Sales by customer type</strong><p>Regular · Senior · PWD</p></div>
-            </div>
           </div>
           <div className="caseCopy"><div className="status">COMPLETED PROJECT</div><h3>BotikaPOS</h3><p>A pharmacy-focused point-of-sale concept designed to make everyday sales and inventory workflows simpler.</p><a className="caseLink" href="https://medipos-eight.vercel.app" target="_blank" rel="noreferrer" aria-label="Visit the live BotikaPOS website in a new tab">Visit the live BotikaPOS site</a><div className="role"><small>MY ROLE</small><p>Requirements · Workflow planning · AI-assisted implementation · Testing & iteration</p></div><div className="honesty"><strong>Built transparently with AI</strong><br />I used Claude Code and Codex as development tools. I directed the build, reviewed the output, tested workflows, and refined the product.</div></div>
         </article>
