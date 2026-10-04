@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <main>
       <nav className="nav shell" aria-label="Main navigation">
-        <a className="brand" href="#top" aria-label="Jemarie home">JA<span>.</span></a>
+        <a className="brand brandWithLogo" href="#top" aria-label="Jemarie Adame home"><img className="brandLogo" src="/jemarie-adame-logo-professional-v2.png" alt="Jemarie Adame — Digital Marketing and Web Support" /></a>
         <div className="navLinks"><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a></div>
         <a className="navCta" href="#contact">Let&apos;s talk <Arrow /></a>
       </nav>

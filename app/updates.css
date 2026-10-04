@@ -11,6 +11,8 @@
 body { font-family: var(--sans); }
 .hero h1 em,.roadmap h2 em,.about h2 em,footer h2 em,.sectionHead h2,.about h2,.caseCopy h3,.ideaGrid h3,.serviceRows h3,.heroBottom .heroIntro p,.proofTitle span,.proofGrid article b,.values article b,.aboutPortrait figcaption span { font-family: var(--serif); }
 .hero h1,.brand { font-family: var(--sans); }
+.brandWithLogo { display: flex; align-items: center; width: 238px; height: 72px; overflow: hidden; }
+.brandLogo { display: block; width: 238px; height: auto; }
 
 .caseVisual {
   position: relative;
@@ -194,6 +196,8 @@ body { font-family: var(--sans); }
 }
 
 @media (max-width: 800px) {
+  .brandWithLogo { width: 190px; height: 58px; }
+  .brandLogo { width: 190px; }
   .roadmap .ideaGrid { grid-template-columns: 1fr; }
   .caseVisual { min-height: 430px; padding: 30px 18px; }
   .dashboardShot { min-height: 300px; }
