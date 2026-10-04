@@ -159,11 +159,20 @@ body { font-family: var(--sans); }
 .contributionMain>p { max-width: 580px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
 .contributionTags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 24px; }
 .contributionTags span { padding: 7px 10px; color: #315244; background: #edf5ef; border: 1px solid #cbded1; border-radius: 20px; font-size: 10px; }
+.visitSite { display: inline-flex; margin-top: 24px; padding-bottom: 4px; color: var(--green); border-bottom: 1px solid currentColor; font-size: 13px; font-weight: 700; letter-spacing: .2px; text-decoration: none; transition: color .25s ease,border-color .25s ease; }
+.visitSite:hover,.visitSite:focus-visible { color: #2e8a5e; border-color: var(--lime); }
 .contributionCard aside { padding: 38px 34px; background: #f2f6f3; border-left: 1px solid var(--line); }
 .contributionCard aside>strong { font-family: var(--serif); font-size: 22px; font-weight: 500; }
 .contributionCard aside>p { color: var(--muted); font-size: 12px; line-height: 1.7; }
 .creditNote { margin-top: 24px; padding: 15px; color: #53635b; background: white; border-left: 3px solid var(--lime); font-size: 11px; line-height: 1.55; }
 .creditNote b { color: var(--green); }
+.contributionGallery { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; padding: 1px 0 0; background: var(--line); }
+.contributionGallery figure { margin: 0; overflow: hidden; background: white; }
+.contributionGallery img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top center; transition: transform .45s ease; }
+.contributionGallery figure:hover img { transform: scale(1.018); }
+.contributionGallery figcaption { display: flex; justify-content: space-between; gap: 20px; padding: 16px 18px 18px; border-top: 1px solid var(--line); }
+.contributionGallery figcaption span { color: var(--green); font-family: var(--serif); font-size: 19px; font-weight: 600; }
+.contributionGallery figcaption small { max-width: 210px; color: var(--muted); font-size: 10px; line-height: 1.5; text-align: right; }
 .about { align-items: start; }
 .aboutPortrait { position: sticky; top: 30px; min-height: 500px; margin: 0; overflow: hidden; background: #173b2b; border: 1px solid var(--line); }
 .aboutPortrait::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg,transparent 58%,rgba(8,28,20,.82)); pointer-events: none; }
@@ -224,6 +233,7 @@ body { font-family: var(--sans); }
   .proofGrid article { min-height: 175px; }
   .contributionCard { grid-template-columns: 120px 1fr; }
   .contributionCard aside { grid-column: 1 / -1; border-top: 1px solid var(--line); border-left: 0; }
+  .contributionGallery { grid-template-columns: 1fr; }
   .contributionIndex span { font-size: 58px; }
   .aboutPortrait { position: relative; top: auto; min-height: 0; }
   .aboutPortrait img { min-height: 0; aspect-ratio: 4 / 5; object-position: 50% 24%; }
@@ -243,6 +253,8 @@ body { font-family: var(--sans); }
   .contributionIndex { min-height: 120px; }
   .contributionMain,.contributionCard aside { padding: 28px 22px; }
   .contributionMain h3 { font-size: 42px; }
+  .contributionGallery figcaption { display: block; }
+  .contributionGallery figcaption small { display: block; margin-top: 5px; max-width: none; text-align: left; }
   .aboutPortrait figcaption { right: 18px; bottom: 18px; left: 18px; }
   .aboutPortrait figcaption { display: block; }
   .aboutPortrait figcaption small { display: block; margin-top: 6px; max-width: none; text-align: left; }

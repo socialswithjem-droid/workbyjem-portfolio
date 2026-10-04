@@ -38,8 +38,12 @@ export default function Home() {
         </article>
         <article className="contributionCard">
           <div className="contributionIndex"><span>02</span><small>CLIENT WEBSITE CONTRIBUTION</small></div>
-          <div className="contributionMain"><div className="statusLine"><i /> WEBSITE ENHANCEMENT SUPPORT</div><h3>Prop Search</h3><p>I supported an existing WordPress/Elementor website by polishing selected areas and improving practical details for visitors.</p><div className="contributionTags"><span>Header updates</span><span>Footer updates</span><span>Image changes</span><span>Contact links</span><span>Layout polishing</span></div></div>
+          <div className="contributionMain"><div className="statusLine"><i /> WEBSITE ENHANCEMENT SUPPORT</div><h3>Prop Search</h3><p>I supported an existing WordPress/Elementor website by polishing selected areas and improving practical details for visitors.</p><div className="contributionTags"><span>Header updates</span><span>Footer updates</span><span>Image changes</span><span>Contact links</span><span>Layout polishing</span></div><a className="visitSite" href="https://propsearch.com.au/" target="_blank" rel="noreferrer" aria-label="Visit the Prop Search website in a new tab">Visit the Prop Search website</a></div>
           <aside><strong>My contribution</strong><p>Website editing, content and image updates, footer/contact improvements, link setup, alignment fixes, and final presentation checks.</p><div className="creditNote"><b>Clear credit</b><br />The original website design and build were created by others. My role was focused on updates and refinement—not claiming the full project as my own.</div></aside>
+          <div className="contributionGallery">
+            <figure><img src="/propsearch-homepage.png" alt="Prop Search homepage showing the navigation, hero section, and property search messaging" /><figcaption><span>Homepage view</span><small>Navigation, imagery, and presentation refinement</small></figcaption></figure>
+            <figure><img src="/propsearch-footer.png" alt="Prop Search website footer showing useful links, contact details, and social media links" /><figcaption><span>Footer and contact area</span><small>Contact links, alignment, and content updates</small></figcaption></figure>
+          </div>
         </article>
       </section>
       <section className="roadmap shell">
