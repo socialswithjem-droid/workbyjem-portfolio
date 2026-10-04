@@ -95,6 +95,14 @@ body { font-family: var(--sans); }
 .heroIntro p strong { color: var(--green); font-weight: 400; }
 .introMeta { margin-top: 17px; color: #65716b; font-size: 10px; letter-spacing: .5px; }
 .introMeta i { display: inline-block; width: 26px; height: 1px; margin: 0 8px 3px 0; background: var(--green); }
+
+/* Compact service overview for faster scanning. */
+.services { padding: 82px 0 88px; }
+.services .sectionHead { margin-bottom: 38px; }
+.services .sectionHead h2 { font-size: clamp(42px, 5vw, 66px); }
+.services .serviceRows article { grid-template-columns: 58px minmax(240px, .9fr) 1.15fr; gap: 24px; padding: 24px 0; }
+.services .serviceRows h3 { font-size: 25px; line-height: 1.15; }
+.services .serviceRows p { font-size: 15px; line-height: 1.55; }
 .proofTitle { display: flex; justify-content: space-between; align-items: center; }
 .proofTitle p { margin: 0; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; }
 .proofTitle span { color: var(--muted); font-family: var(--serif); font-size: 16px; font-style: italic; }
@@ -218,6 +226,10 @@ body { font-family: var(--sans); }
   .aboutPortrait img { min-height: 0; aspect-ratio: 4 / 5; object-position: 50% 24%; }
   .aboutCopy .values { grid-template-columns: 1fr; }
   .values article { min-height: 135px; }
+  .services { padding: 68px 0 72px; }
+  .services .sectionHead { margin-bottom: 30px; }
+  .services .serviceRows article { grid-template-columns: 34px 1fr; gap: 16px; padding: 22px 0; }
+  .services .serviceRows p { grid-column: 2; }
 }
 
 @media (max-width: 480px) {

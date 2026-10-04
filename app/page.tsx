@@ -28,7 +28,7 @@ export default function Home() {
         <div className="heroScene" aria-hidden="true"><i /><i /><i /><b /><b /><span>✦</span><span>✦</span></div>
         <div className="eyebrow"><i /> Available for remote opportunities</div>
         <h1>Marketing ideas,<br /><em>made real.</em></h1>
-        <div className="heroBottom"><div className="heroIntro"><span>DIGITAL + TECHNICAL</span><p>I&apos;m Jemarie—a digital and email marketer who uses <strong>AI-assisted development</strong> to turn business ideas into useful web experiences.</p><div className="introMeta"><i /> Strategy to working experience</div></div><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
+        <div className="heroBottom"><div className="heroIntro"><span>MARKETING + DIGITAL SYSTEMS</span><p>I&apos;m Jemarie—a digital and email marketer combining <strong>marketing strategy, WordPress, CRM support, and AI-assisted development</strong> to turn ideas into useful digital experiences.</p><div className="introMeta"><i /> From strategy to a working digital experience</div></div><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
       </section>
       <div className="marquee" aria-label="Services: Digital marketing, email marketing, GoHighLevel CRM support, WordPress websites, landing pages, AI-assisted web building, custom business systems, and website support">
         <div className="marqueeTrack">
