@@ -11,7 +11,7 @@ export default function Home() {
       <section className="hero shell" id="top">
         <div className="eyebrow"><i /> Available for remote opportunities</div>
         <h1>Marketing ideas,<br /><em>made real.</em></h1>
-        <div className="heroBottom"><div className="heroIntro"><span>DIGITAL + TECHNICAL</span><p>I&apos;m Jemarie—a digital and email marketer who uses <strong>AI-assisted development</strong> to turn business ideas into useful web experiences.</p><div className="introMeta"><i /> Strategy to working experience</div></div><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
+        <div className="heroBottom"><div className="heroIntro"><div className="introBackdrop" aria-hidden="true"><i /><i /><i /><b /><b /></div><span>DIGITAL + TECHNICAL</span><p>I&apos;m Jemarie—a digital and email marketer who uses <strong>AI-assisted development</strong> to turn business ideas into useful web experiences.</p><div className="introMeta"><i /> Strategy to working experience</div></div><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
       </section>
       <div className="marquee" aria-label="Services: Digital marketing, email marketing, landing pages, AI-assisted web building, custom business systems, and website support">
         <div className="marqueeTrack">
