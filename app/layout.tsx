@@ -4,7 +4,7 @@ import "./updates.css";
 
 export const metadata: Metadata = {
   title: "Jemarie Adame | Digital Marketing & AI-Assisted Web",
-  description: "Digital and email marketing, landing pages, website support, and transparent AI-assisted business tool development.",
+  description: "Digital and email marketing, GoHighLevel CRM support, WordPress websites, landing pages, and transparent AI-assisted business tool development.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

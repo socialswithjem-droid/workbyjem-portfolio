@@ -14,14 +14,14 @@ export default function Home() {
         <h1>Marketing ideas,<br /><em>made real.</em></h1>
         <div className="heroBottom"><div className="heroIntro"><span>DIGITAL + TECHNICAL</span><p>I&apos;m Jemarie—a digital and email marketer who uses <strong>AI-assisted development</strong> to turn business ideas into useful web experiences.</p><div className="introMeta"><i /> Strategy to working experience</div></div><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
       </section>
-      <div className="marquee" aria-label="Services: Digital marketing, email marketing, GoHighLevel CRM support, landing pages, AI-assisted web building, custom business systems, and website support">
+      <div className="marquee" aria-label="Services: Digital marketing, email marketing, GoHighLevel CRM support, WordPress websites, landing pages, AI-assisted web building, custom business systems, and website support">
         <div className="marqueeTrack">
-          <span>DIGITAL MARKETING <b>✦</b> EMAIL MARKETING <b>✦</b> GHL CRM SUPPORT <b>✦</b> LANDING PAGES <b>✦</b> AI-ASSISTED WEB BUILDING <b>✦</b> CUSTOM BUSINESS SYSTEMS <b>✦</b> WEBSITE SUPPORT <b>✦</b></span>
-          <span aria-hidden="true">DIGITAL MARKETING <b>✦</b> EMAIL MARKETING <b>✦</b> GHL CRM SUPPORT <b>✦</b> LANDING PAGES <b>✦</b> AI-ASSISTED WEB BUILDING <b>✦</b> CUSTOM BUSINESS SYSTEMS <b>✦</b> WEBSITE SUPPORT <b>✦</b></span>
+          <span>DIGITAL MARKETING <b>✦</b> EMAIL MARKETING <b>✦</b> GHL CRM SUPPORT <b>✦</b> WORDPRESS WEBSITES <b>✦</b> LANDING PAGES <b>✦</b> AI-ASSISTED WEB BUILDING <b>✦</b> CUSTOM BUSINESS SYSTEMS <b>✦</b> WEBSITE SUPPORT <b>✦</b></span>
+          <span aria-hidden="true">DIGITAL MARKETING <b>✦</b> EMAIL MARKETING <b>✦</b> GHL CRM SUPPORT <b>✦</b> WORDPRESS WEBSITES <b>✦</b> LANDING PAGES <b>✦</b> AI-ASSISTED WEB BUILDING <b>✦</b> CUSTOM BUSINESS SYSTEMS <b>✦</b> WEBSITE SUPPORT <b>✦</b></span>
         </div>
       </div>
       <section className="proof shell" aria-label="My focus areas">
-        <div className="proofTitle"><p>WHAT I BRING</p><span>Four connected capabilities, one practical workflow.</span></div><div className="proofGrid"><article><small>01</small><b>Digital marketing</b><p>Campaign support, content, research, and performance tracking.</p></article><article><small>02</small><b>Email campaigns</b><p>Newsletters, customer journeys, automation, testing, and reporting.</p></article><article><small>03</small><b>Landing pages</b><p>Conversion-focused pages, forms, updates, and website support.</p></article><article><small>04</small><b>AI-assisted building</b><p>Transparent prototyping and practical tools shaped around real needs.</p></article></div>
+        <div className="proofTitle"><p>WHAT I BRING</p><span>Five connected capabilities, one practical workflow.</span></div><div className="proofGrid"><article><small>01</small><b>Digital marketing</b><p>Campaign support, content, research, and performance tracking.</p></article><article><small>02</small><b>Email campaigns</b><p>Newsletters, customer journeys, automation, testing, and reporting.</p></article><article><small>03</small><b>Websites & landing pages</b><p>WordPress, conversion-focused pages, forms, content updates, QA, and web support.</p></article><article><small>04</small><b>AI-assisted building</b><p>Transparent prototyping and practical tools shaped around real needs.</p></article><article><small>05</small><b>GHL CRM support</b><p>Contacts, pipelines, forms, calendars, workflows, testing, and customization.</p></article></div>
       </section>
       <section className="work shell" id="work">
         <div className="sectionHead"><div><small>01 / SELECTED WORK</small><h2>Built from a real<br />business need.</h2></div><p>I&apos;m growing through hands-on projects: defining the problem, shaping the workflow, guiding AI tools, and testing what gets built.</p></div>
@@ -50,7 +50,7 @@ export default function Home() {
         <div className="serviceRows">
           <article><b>01</b><h3>Digital marketing support</h3><p>Campaign coordination, content support, research, tracking, and clear performance reporting.</p></article>
           <article><b>02</b><h3>Email marketing</h3><p>Campaign setup, newsletters, audience journeys, automation support, testing, and optimization.</p></article>
-          <article><b>03</b><h3>Landing pages & web support</h3><p>Conversion-focused pages, content updates, forms, QA, and practical website improvements.</p></article>
+          <article><b>03</b><h3>Websites, WordPress & landing pages</h3><p>WordPress support, conversion-focused pages, content updates, forms, QA, and practical website improvements.</p></article>
           <article><b>04</b><h3>Custom AI-assisted builds</h3><p>Small business tools and prototypes shaped collaboratively, with transparent methods and realistic scope.</p></article>
           <article><b>05</b><h3>GoHighLevel CRM support</h3><p>Practical GHL setup and customization for contacts, pipelines, forms, calendars, workflows, testing, and ongoing campaign support.</p></article>
         </div>
