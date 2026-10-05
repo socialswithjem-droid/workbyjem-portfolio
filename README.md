@@ -41,6 +41,24 @@ Create a production build with:
 pnpm build
 ```
 
+`pnpm build` converts the editable source files into an optimized version for
+hosting. It does not publish the website by itself.
+
+## Cloudflare deployment
+
+The project is configured for Cloudflare Workers. Cloudflare can connect to
+this GitHub repository and automatically rebuild the live website whenever a
+new commit is pushed to `main`.
+
+For a manual deployment from an authenticated computer, use:
+
+```bash
+pnpm run deploy:vinext
+```
+
+The free Cloudflare address will follow this pattern:
+`workbyjem.<account-subdomain>.workers.dev`.
+
 ## Process and transparency
 
 This portfolio was developed with AI-assisted coding tools, including Codex
