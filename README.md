@@ -57,7 +57,7 @@ pnpm run deploy:vinext
 ```
 
 The free Cloudflare address will follow this pattern:
-`workbyjem.<account-subdomain>.workers.dev`.
+`worksbyjem.<account-subdomain>.workers.dev`.
 
 ## Process and transparency
 

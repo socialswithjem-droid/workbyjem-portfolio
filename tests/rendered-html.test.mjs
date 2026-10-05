@@ -23,7 +23,7 @@ test("portfolio is configured for Cloudflare Workers", async () => {
     readFile(projectFile("vite.config.ts"), "utf8"),
   ]);
 
-  assert.match(wrangler, /"name": "workbyjem"/);
+  assert.match(wrangler, /"name": "worksbyjem"/);
   assert.match(wrangler, /"nodejs_compat"/);
   assert.match(packageJson, /"build:vinext"/);
   assert.match(packageJson, /"deploy:vinext"/);
