@@ -1,81 +1,102 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
+type IconName = "marketing" | "crm" | "web" | "ai" | "email";
+function Icon({ name }: { name: IconName }) {
+  if (name === "marketing") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 13 10-5v10L4 13Z"/><path d="M14 10h3a3 3 0 0 1 0 6h-3M6 14l1.5 5H11l-2-6"/></svg>;
+  if (name === "crm") return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.4-4 2.2-6 5.5-6s5.1 2 5.5 6M16 8h5M18.5 5.5v5"/></svg>;
+  if (name === "web") return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M3 8h18M7 6h.01M10 6h.01"/></svg>;
+  if (name === "email") return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>;
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="4"/></svg>;
+}
+const services = [
+  ["01", "Digital marketing", "Campaign support, content coordination, research, tracking, and useful reporting."],
+  ["02", "Email campaigns", "Newsletters, customer journeys, automation support, testing, and optimization."],
+  ["03", "GHL CRM support", "Contacts, pipelines, forms, calendars, workflows, testing, and customization."],
+  ["04", "Websites & landing pages", "WordPress, Elementor, responsive pages, forms, content updates, and website QA."],
+  ["05", "AI-assisted building", "Practical prototypes and digital tools—with transparent methods and realistic scope."],
+];
+const marqueeItems = ["MARKETING", "EMAIL", "CRM SYSTEMS", "WEB SUPPORT", "WORDPRESS", "AI-ASSISTED"];
+const toolGroups = [
+  ["MARKETING", "Campaigns, content, and customer communication", ["Digital campaigns", "Email marketing", "Content support", "Research", "Analytics"]],
+  ["CRM + WEB", "Connected journeys and useful web experiences", ["GoHighLevel", "WordPress", "Elementor", "Landing pages", "Website QA"]],
+  ["AI + DELIVERY", "Tools I direct to prototype, test, and ship", ["Claude Code", "Codex", "ChatGPT", "GitHub", "Cloudflare", "Vercel"]],
+];
 
-const CardIcon = ({ name }: { name: string }) => {
-  const paths: Record<string, ReactNode> = {
-    marketing: <><path d="M4 15V9"/><path d="M9 17V7"/><path d="M14 14V10"/><path d="M19 18V5"/></>,
-    email: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></>,
-    web: <><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18M7 6h.01"/></>,
-    ai: <><path d="M12 3 14 8l5 2-5 2-2 5-2-5-5-2 5-2 2-5Z"/><path d="m18 15 .8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8L18 15Z"/></>,
-    crm: <><path d="M4 19v-2a4 4 0 0 1 4-4h4"/><circle cx="9" cy="7" r="3"/><path d="M16 11v8M12 15h8"/></>,
-    communication: <><path d="M21 15a4 4 0 0 1-4 4H9l-5 2v-6a4 4 0 0 1-1-3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 9h8M8 13h5"/></>,
-    honesty: <><path d="M12 3 5 6v5c0 4.5 2.8 8 7 10 4.2-2 7-5.5 7-10V6Z"/><path d="m9 12 2 2 4-5"/></>,
-    curiosity: <><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v.01M9.5 11a1.5 1.5 0 1 1 2.4 1.2c-.6.45-.9.8-.9 1.3"/></>,
-  };
-  return <svg className="cardIcon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{paths[name]}</svg>;
-};
+function Laptop({ children, label, href }: { children: ReactNode; label: string; href?: string }) {
+  const content = <div className="laptop" aria-label={label}><div className="laptopScreen">{children}</div><img src="/laptop-frame-mocha-v1.png" alt="" aria-hidden="true" /></div>;
+  return href ? <a className="laptopLink" href={href} target="_blank" rel="noreferrer" aria-label={`${label} — open live website`}>{content}</a> : content;
+}
+function LiveSite({ src, title }: { src: string; title: string }) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    const screen = iframe?.parentElement;
+    if (!iframe || !screen) return;
+    const fitDesktopSite = () => {
+      const scale = Math.min(screen.clientWidth / 1440, screen.clientHeight / 900);
+      iframe.style.transform = `scale(${scale})`;
+    };
+    fitDesktopSite();
+    const frame = requestAnimationFrame(fitDesktopSite);
+    const observer = new ResizeObserver(fitDesktopSite);
+    observer.observe(screen);
+    window.addEventListener("resize", fitDesktopSite);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("resize", fitDesktopSite);
+    };
+  }, []);
+  return <iframe ref={iframeRef} className="desktopSite" src={src} title={title} loading="lazy" scrolling="yes" />;
+}
 
 export default function Home() {
+  const [openTool, setOpenTool] = useState("MARKETING");
   return (
-    <main>
-      <nav className="nav shell" aria-label="Main navigation">
-        <a className="brand brandWithLogo" href="#top" aria-label="Jemarie Adame home"><img className="brandLogo" src="/jemarie-adame-logo-professional-v2.png" alt="Jemarie Adame — Digital Marketing and Web Support" /></a>
-        <div className="navLinks"><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a></div>
-        <a className="navCta" href="#contact">Let&apos;s talk <Arrow /></a>
-      </nav>
-      <section className="hero shell" id="top">
-        <div className="heroScene" aria-hidden="true"><i /><i /><i /><b /><b /><span>✦</span><span>✦</span></div>
-        <div className="eyebrow"><i /> Available for remote opportunities</div>
-        <h1>Marketing ideas,<br /><em>made real.</em></h1>
-        <div className="heroBottom"><div className="heroIntro"><span>MARKETING + DIGITAL SYSTEMS</span><p>I&apos;m Jemarie—a digital and email marketer combining <strong>marketing strategy, WordPress, CRM support, and AI-assisted development</strong> to turn ideas into useful digital experiences.</p><div className="introMeta"><i /> From strategy to a working digital experience</div></div><a className="roundLink" href="#work" aria-label="See my work">↓</a></div>
-      </section>
-      <div className="marquee" aria-label="Services: Digital marketing, email marketing, GoHighLevel CRM support, WordPress websites, landing pages, AI-assisted web building, custom business systems, and website support">
-        <div className="marqueeTrack">
-          <span>DIGITAL MARKETING <b>✦</b> EMAIL MARKETING <b>✦</b> GHL CRM SUPPORT <b>✦</b> WORDPRESS WEBSITES <b>✦</b> LANDING PAGES <b>✦</b> AI-ASSISTED WEB BUILDING <b>✦</b> CUSTOM BUSINESS SYSTEMS <b>✦</b> WEBSITE SUPPORT <b>✦</b></span>
-          <span aria-hidden="true">DIGITAL MARKETING <b>✦</b> EMAIL MARKETING <b>✦</b> GHL CRM SUPPORT <b>✦</b> WORDPRESS WEBSITES <b>✦</b> LANDING PAGES <b>✦</b> AI-ASSISTED WEB BUILDING <b>✦</b> CUSTOM BUSINESS SYSTEMS <b>✦</b> WEBSITE SUPPORT <b>✦</b></span>
+    <main id="top">
+      <header className="topbar"><a className="wordmark" href="#top" aria-label="Jemarie Adame home">JEMARIE<span>.</span></a><nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav><a className="talk" href="#contact">Let&apos;s talk <Arrow /></a></header>
+
+      <section className="cinemaHero" aria-labelledby="hero-title">
+        <div className="filmGrain" aria-hidden="true" /><div className="heroGlow" aria-hidden="true" />
+        <div className="heroContent">
+          <div className="heroCopy"><p className="kicker"><span /> DIGITAL MARKETING · CRM · WEB SUPPORT</p><h1 id="hero-title"><span>I TURN</span><strong>IDEAS</strong><em>INTO IMPACT.</em></h1><p className="heroText">Digital and email marketing shaped into clear campaigns, useful websites, organized CRM workflows, and practical AI-assisted experiences.</p><div className="heroActions"><a className="primaryBtn" href="#work">Explore my work <Arrow /></a><a className="ghostBtn" href="#about">Meet Jemarie</a></div></div>
+          <div className="heroEditorial" aria-label="Jemarie's digital marketing and web services"><div className="editorialOrb" aria-hidden="true" /><div className="orbit orbitOne" aria-hidden="true" /><div className="orbit orbitTwo" aria-hidden="true" /><div className="orbitalWords" aria-hidden="true"><b className="orbitLabel orbitLabelDigital">DIGITAL</b><b className="orbitLabel orbitLabelEmail">EMAIL</b><b className="orbitLabel orbitLabelWeb">WEB</b></div><p>Clear ideas.<br />Useful systems.<br />Thoughtful execution.</p></div>
         </div>
-      </div>
-      <section className="proof shell" aria-label="My focus areas">
-        <div className="proofTitle"><p>WHAT I BRING</p><span>Five connected capabilities, one practical workflow.</span></div><div className="proofGrid"><article><div className="cardTop"><small>01</small><CardIcon name="marketing" /></div><b>Digital marketing</b><p>Campaign support, content, research, and performance tracking.</p></article><article><div className="cardTop"><small>02</small><CardIcon name="email" /></div><b>Email campaigns</b><p>Newsletters, customer journeys, automation, testing, and reporting.</p></article><article><div className="cardTop"><small>03</small><CardIcon name="web" /></div><b>Websites & landing pages</b><p>WordPress, conversion-focused pages, forms, content updates, QA, and web support.</p></article><article><div className="cardTop"><small>04</small><CardIcon name="ai" /></div><b>AI-assisted building</b><p>Transparent prototyping and practical tools shaped around real needs.</p></article><article><div className="cardTop"><small>05</small><CardIcon name="crm" /></div><b>GHL CRM support</b><p>Contacts, pipelines, forms, calendars, workflows, testing, and customization.</p></article></div>
+        <div className="heroFooter"><span>BASED IN THE PHILIPPINES · AVAILABLE REMOTELY</span><a href="#about">SCROLL TO DISCOVER ↓</a></div>
       </section>
-      <section className="work shell" id="work">
-        <div className="sectionHead"><div><small>01 / SELECTED WORK</small><h2>Built around real<br />business needs.</h2></div><p>A mix of original projects and clearly credited client contributions—showing what I built, what I improved, and where I supported an existing website.</p></div>
-        <article className="caseCard">
-          <div className="caseVisual">
-            <img className="dashboardShot" src="/botikapos-macbook-dashboard-v2.png" alt="BotikaPOS pharmacy dashboard displayed in a MacBook mockup, showing sales, transactions, customers, profit, inventory status, and analytics" />
-          </div>
-          <div className="caseCopy"><div className="status">COMPLETED PROJECT</div><h3>BotikaPOS</h3><p>A pharmacy-focused point-of-sale concept designed to make everyday sales and inventory workflows simpler.</p><a className="caseLink" href="https://medipos-eight.vercel.app" target="_blank" rel="noreferrer" aria-label="Visit the live BotikaPOS website in a new tab">Visit the live BotikaPOS site</a><div className="role"><small>MY ROLE</small><p>Requirements · Workflow planning · AI-assisted implementation · Testing & iteration</p></div><div className="honesty"><strong>Built transparently with AI</strong><br />I used Claude Code and Codex as development tools. I directed the build, reviewed the output, tested workflows, and refined the product.</div></div>
-        </article>
-        <article className="contributionCard">
-          <div className="contributionIndex"><span>02</span><small>CLIENT WEBSITE CONTRIBUTION</small></div>
-          <div className="contributionMain"><div className="statusLine"><i /> WEBSITE ENHANCEMENT SUPPORT</div><h3>Prop Search</h3><p>I supported an existing WordPress/Elementor website by polishing selected areas and improving practical details for visitors.</p><div className="contributionTags"><span>Header updates</span><span>Footer updates</span><span>Image changes</span><span>Contact links</span><span>Layout polishing</span></div><a className="visitSite" href="https://propsearch.com.au/" target="_blank" rel="noreferrer" aria-label="Visit the Prop Search website in a new tab">Visit the Prop Search website</a></div>
-          <aside><strong>My contribution</strong><p>Website editing, content and image updates, footer/contact improvements, link setup, alignment fixes, and final presentation checks.</p><div className="creditNote"><b>Clear credit</b><br />The original website design and build were created by others. My role was focused on updates and refinement—not claiming the full project as my own.</div></aside>
-          <div className="contributionGallery">
-            <figure><div className="propLaptop"><div className="propCamera" /><div className="propScreen"><img src="/propsearch-homepage.png" alt="Prop Search homepage showing the navigation, hero section, and property search messaging" /></div><div className="propBase" /></div><figcaption><span>Homepage view</span><small>Navigation, imagery, and presentation refinement</small></figcaption></figure>
-            <figure><div className="propLaptop"><div className="propCamera" /><div className="propScreen"><img src="/propsearch-footer.png" alt="Prop Search website footer showing useful links, contact details, and social media links" /></div><div className="propBase" /></div><figcaption><span>Footer and contact area</span><small>Contact links, alignment, and content updates</small></figcaption></figure>
-          </div>
-        </article>
+      <div className="cinemaMarquee" aria-label="Areas of work"><div>{Array.from({ length: 4 }, (_, set) => marqueeItems.map((item) => <Fragment key={`${set}-${item}`}><span>{item}</span><i aria-hidden="true" /></Fragment>))}</div></div>
+
+      <section className="aboutSection reveal" id="about">
+        <div className="sectionLabel"><span>01</span> / ABOUT ME</div>
+          <div className="aboutGrid"><div className="aboutCopy"><h2>STRATEGY<br /><em>MEETS</em><br />EXECUTION.</h2><p className="lead">I&apos;m Jemarie—a digital and email marketer who uses WordPress, CRM tools, and AI-assisted development to turn business ideas into useful digital experiences.</p><p>My strength is connecting the message, the workflow, and the customer experience. I&apos;m transparent about the tools I use, careful about what I claim, and committed to learning through real projects.</p></div><div className="aboutCard"><div className="cardLight" aria-hidden="true" /><img src="/jemarie-portfolio-portrait-transparent-v5.png" alt="Jemarie Adame, digital and email marketer" /><div className="aboutCardMeta"><span>OPEN TO REMOTE OPPORTUNITIES</span></div></div></div>
+        <div className="capabilityStrip"><article><b><Icon name="marketing" /></b><div><strong>MARKETING</strong><span>Strategy, content, and campaigns</span></div></article><article><b><Icon name="crm" /></b><div><strong>CRM</strong><span>Organized customer journeys</span></div></article><article><b><Icon name="web" /></b><div><strong>WEB</strong><span>Useful visitor experiences</span></div></article><article><b><Icon name="ai" /></b><div><strong>AI-ASSISTED</strong><span>Directed with transparency</span></div></article></div>
       </section>
-      <section className="roadmap shell">
-        <div className="sectionHead compact"><div><small>02 / EXPLORING NEXT</small><h2>Ideas in the<br /><em>workshop.</em></h2></div><p>These are future concepts—not finished products yet. I&apos;m interested in learning how different businesses work, then building tools around their real needs.</p></div>
-        <div className="ideaGrid">
-          <article className="activeIdea"><span>01</span><div className="laptop" aria-label="Piggery management dashboard mockup"><div className="camera" /><div className="laptopScreen pigScreen"><div className="mockSide"><i /><i /><i /><i /></div><div className="mockMain"><b>Piggery overview</b><div className="mockStats"><i /><i /><i /></div><div className="pigRows"><i /><i /><i /></div></div><div className="buildBadge">BUILDING</div></div><div className="laptopBase" /></div><h3>Piggery Management</h3><p>A practical system for tracking animals, feed, health records, expenses, and farm performance.</p><small>CURRENTLY BEING BUILT</small></article>
-          <article className="openIdea customIdea"><span>02</span><div className="laptop customLaptop" aria-label="Custom business system dashboard mockup"><div className="camera" /><div className="laptopScreen customScreen"><div className="customTop"><b>Your system</b><i>Customized</i></div><div className="customModules"><i>Customers</i><i>Inventory</i><i>Reports</i><i>Workflow</i></div><div className="customFlow"><i /><b>→</b><i /><b>→</b><i /></div><div className="buildBadge">YOUR WORKFLOW</div></div><div className="laptopBase" /></div><h3>Your Workflow, Your System</h3><p>Have a repetitive process, spreadsheet, or manual workflow? I can help shape it into a focused AI-assisted business tool.</p><div className="customTags"><span>Tracking</span><span>Dashboards</span><span>Internal tools</span></div><a className="ideaCta" href="https://wa.me/639926348536?text=Hi%20Jemarie%2C%20I%20have%20an%20idea%20for%20a%20custom%20business%20system." target="_blank" rel="noreferrer">Discuss your idea ↗</a><small>OPEN FOR CUSTOM PROJECTS</small></article>
+
+      <section className="workSection" id="work">
+        <div className="workIntro reveal"><div className="sectionLabel"><span>02</span> / SELECTED WORK</div><h2>WORK WITH<br /><em>REAL PURPOSE.</em></h2><p>Original projects and clearly credited client contributions—presented with honest scope, practical thinking, and attention to the final experience.</p></div>
+        <div className="projectStack">
+          <article className="projectCard botikaCard"><div className="projectCopy"><small>01 · ORIGINAL PROJECT</small><h3>BOTIKA<span className="inlineAccent">POS</span></h3><p>A pharmacy-focused point-of-sale and inventory concept shaped around day-to-day operational needs.</p><ul><li>Workflow planning</li><li>AI-assisted implementation</li><li>Testing and iteration</li></ul><a href="https://medipos-eight.vercel.app" target="_blank" rel="noreferrer">View live system <Arrow /></a><div className="honestyNote"><b>Built transparently with AI.</b> Claude Code and Codex supported implementation; I directed, reviewed, tested, and refined the result.</div></div><div className="projectMedia compactMedia"><span className="frameLabel">CLICK THE LAPTOP TO VIEW LIVE</span><a className="botikaLaptop" href="https://medipos-eight.vercel.app" target="_blank" rel="noreferrer"><img src="/botikapos-laptop-transparent-v3.png" alt="BotikaPOS dashboard in a clickable laptop mockup" /></a></div></article>
+
+          <article className="projectCard propCard"><div className="projectCopy"><small>02 · CLIENT WEBSITE CONTRIBUTION</small><h3>PROPSEARCH</h3><p>Enhancement support for an existing WordPress and Elementor website, focused on practical visitor-facing improvements.</p><ul><li>Header and footer updates</li><li>Image and content changes</li><li>Links, alignment, and presentation QA</li></ul><a href="https://propsearch.com.au/" target="_blank" rel="noreferrer">Visit client website <Arrow /></a><div className="honestyNote"><b>Clear project credit.</b> The original design and build belong to others. My contribution focused on updates and refinement.</div></div><div className="projectMedia liveMedia"><span className="frameLabel">SCROLL INSIDE THE SCREEN</span><Laptop label="Scrollable PropSearch client website"><LiveSite src="https://propsearch.com.au/" title="Scrollable preview of the PropSearch website" /></Laptop></div></article>
+
+          <article className="projectCard altaCard"><div className="projectCopy"><small>03 · CONCEPT WEBSITE BUILD</small><h3>ALTAVENTO<br /><span className="inlineAccent">TEMPESTA</span></h3><p>A cinematic, scroll-led campaign website for a fictional twenty-car series—built as a polished creative web concept.</p><ul><li>Immersive page structure</li><li>Responsive experience</li><li>Visual and interaction refinement</li></ul><a href="https://altavento-tempesta.pages.dev" target="_blank" rel="noreferrer">Visit live website <Arrow /></a><div className="honestyNote"><b>Original concept work.</b> Designed and built as a portfolio project using an AI-assisted process, with creative direction, review, and testing by Jemarie.</div></div><div className="projectMedia liveMedia altaLive"><span className="frameLabel">SCROLL INSIDE THE SCREEN</span><Laptop label="Scrollable Altavento Tempesta website"><LiveSite src="https://altavento-tempesta.pages.dev" title="Scrollable preview of Altavento Tempesta" /></Laptop></div></article>
+
+          <article className="projectCard pigCard"><div className="projectCopy"><small>04 · CURRENTLY BUILDING</small><h3>PIGGERY<br /><span className="inlineAccent">SYSTEM</span></h3><p>A piggery management concept for bringing animal records, feed, health, expenses, and farm performance into one focused workflow.</p><ul><li>Workflow discovery</li><li>System planning</li><li>Prototype in progress</li></ul><a href="mailto:socialswithjem@gmail.com?subject=Piggery%20workflow%20idea">Discuss a workflow idea <Arrow /></a><div className="honestyNote"><b>In progress.</b> This is an active concept—not a finished client system. The screen is an early interface direction.</div></div><div className="projectMedia liveMedia pigMedia"><span className="frameLabel">EARLY DASHBOARD DIRECTION</span><Laptop label="Piggery management system prototype"><div className="piggeryScreen"><header><b>Piggery System</b><span>Overview</span></header><div className="pigMetrics"><i><small>Active animals</small><strong>128</strong></i><i><small>Feed status</small><strong>82%</strong></i><i><small>Health tasks</small><strong>06</strong></i></div><div className="pigChart"><b>Weekly activity</b><div><i/><i/><i/><i/><i/><i/><i/></div></div></div></Laptop></div></article>
         </div>
       </section>
-      <section className="services shell" id="services">
-        <div className="sectionHead compact"><div><small>03 / HOW I CAN HELP</small><h2>Strategy meets<br />implementation.</h2></div></div>
-        <div className="serviceRows">
-          <article><b>01</b><h3>Digital marketing support</h3><p>Campaign coordination, content support, research, tracking, and clear performance reporting.</p></article>
-          <article><b>02</b><h3>Email marketing</h3><p>Campaign setup, newsletters, audience journeys, automation support, testing, and optimization.</p></article>
-          <article><b>03</b><h3>Websites, WordPress & landing pages</h3><p>WordPress support, conversion-focused pages, content updates, forms, QA, and practical website improvements.</p></article>
-          <article><b>04</b><h3>Custom AI-assisted builds</h3><p>Small business tools and prototypes shaped collaboratively, with transparent methods and realistic scope.</p></article>
-          <article><b>05</b><h3>GoHighLevel CRM support</h3><p>Practical GHL setup and customization for contacts, pipelines, forms, calendars, workflows, testing, and ongoing campaign support.</p></article>
-        </div>
+
+      <section className="skillsSection reveal" id="skills">
+        <div className="sectionLabel"><span>03</span> / CAPABILITIES</div><div className="skillsHead"><h2>TOOLS THAT<br /><em>MOVE WORK FORWARD.</em></h2><p>I combine marketing judgment with practical platforms and AI-assisted execution. My focus is choosing what genuinely helps the workflow.</p></div>
+        <div className="toolAccordion"><div className="toolTabs" role="tablist" aria-label="Capability groups">{toolGroups.map(([title]) => <button key={title as string} className={openTool === title ? "active" : ""} onClick={() => setOpenTool(title as string)} aria-expanded={openTool === title}><span>{title}</span><b>{openTool === title ? "−" : "+"}</b></button>)}</div>{toolGroups.map(([title, description, items]) => openTool === title && <article className="toolPanel" key={title as string}><div><small>{title}</small><h3>{description}</h3></div><div>{(items as string[]).map((item, i) => <span key={item}><b>{String(i + 1).padStart(2, "0")}</b>{item}</span>)}</div></article>)}</div>
+        <div className="serviceList">{services.map(([n, title, copy], index) => <article key={n}><b>{n}</b><div className="serviceIcon">{<Icon name={(["marketing", "email", "crm", "web", "ai"] as IconName[])[index]} />}</div><h3>{title}</h3><p>{copy}</p></article>)}</div>
       </section>
-      <section className="about shell" id="about"><figure className="aboutPortrait"><img src="/jemarie-portfolio-portrait.png" alt="Jemarie Adame in a forest-green jacket, photographed in a warm creative-professional style" /><figcaption><span>Jemarie Adame</span><small>DIGITAL MARKETING · EMAIL · AI-ASSISTED WEB</small></figcaption></figure><div className="aboutCopy"><small>04 / ABOUT ME</small><h2>Curious enough to learn.<br /><em>Practical enough to ship.</em></h2><div className="aboutStory"><p className="aboutLead">My foundation is <strong>digital and email marketing</strong>. Building BotikaPOS showed me how far I could take an operational idea—shaping the workflow, guiding AI tools, testing the experience, and turning it into something tangible.</p><p>I&apos;m transparent about how I work. AI supports my process, but thoughtful direction, careful testing, and clear communication remain my responsibility. I&apos;m continuing to strengthen my technical skills with every project I build.</p></div><div className="aboutAvailability"><i /><span>Open to remote roles, project support, and focused collaborations</span></div><div className="workLabel">HOW I WORK</div><div className="values"><article><div className="cardTop"><span>01</span><CardIcon name="communication" /></div><b>Clear communication</b><p>Requirements, progress, and limitations explained without unnecessary complexity.</p></article><article><div className="cardTop"><span>02</span><CardIcon name="honesty" /></div><b>Honest capabilities</b><p>Transparent tools, realistic scope, and no pretending a work in progress is finished.</p></article><article><div className="cardTop"><span>03</span><CardIcon name="curiosity" /></div><b>Curious problem-solving</b><p>A willingness to understand the workflow, test ideas, and keep improving the result.</p></article></div></div></section>
-      <footer id="contact"><div className="shell footerInner"><small>HAVE A PROJECT OR ROLE IN MIND?</small><h2>Let&apos;s make something<br /><em>useful together.</em></h2><div className="contactLinks"><a className="contactButton" href="mailto:socialswithjem@gmail.com">Email me <Arrow /></a><a className="contactButton outline" href="https://wa.me/639926348536" target="_blank" rel="noreferrer">WhatsApp <Arrow /></a></div><div className="directContact"><a href="mailto:socialswithjem@gmail.com">socialswithjem@gmail.com</a><a href="https://wa.me/639926348536" target="_blank" rel="noreferrer">0992 634 8536</a></div><div className="footerBottom"><span>© 2026 Jemarie Adame</span><span>Digital marketing · Email · AI-assisted web</span><a href="#top">Back to top ↑</a></div></div></footer>
+
+      <section className="processSection reveal"><div className="sectionLabel"><span>04</span> / HOW I WORK</div><div className="processHead"><h2>HONEST PROCESS.<br /><em>USEFUL OUTCOMES.</em></h2><p>A clear, collaborative rhythm that keeps the goal visible from first conversation to final review.</p></div><div className="processRail"><article><span>01</span><h3>Understand</h3><p>Clarify the goal, audience, workflow, and current problem.</p></article><article><span>02</span><h3>Shape</h3><p>Turn ideas into a focused plan with realistic scope.</p></article><article><span>03</span><h3>Build</h3><p>Use the right marketing, CRM, web, and AI tools.</p></article><article><span>04</span><h3>Test</h3><p>Review the experience, refine details, and communicate clearly.</p></article></div></section>
+
+      <footer id="contact"><div className="contactGlow" aria-hidden="true" /><div className="contactLines" aria-hidden="true" /><div className="sectionLabel"><span>05</span> / LET&apos;S CONNECT</div><h2>HAVE A ROLE<br />OR <em>IDEA?</em></h2><p>Let&apos;s turn it into something clear, useful, and ready to move forward.</p><div className="contactActions"><a href="mailto:socialswithjem@gmail.com">Email Jemarie <Arrow /></a><a href="https://wa.me/639926348536" target="_blank" rel="noreferrer">WhatsApp <Arrow /></a></div><div className="footerLine"><span>© 2026 JEMARIE ADAME</span><span>DIGITAL MARKETING · EMAIL · CRM · WEB</span><a href="#top">BACK TO TOP ↑</a></div></footer>
     </main>
   );
 }
