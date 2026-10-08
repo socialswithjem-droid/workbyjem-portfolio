@@ -259,3 +259,93 @@ footer h2 em{font-family:"Oskon 90s",var(--sans);font-style:normal;font-weight:4
   .orbitLabelWeb{transform:translate(-50%,-50%) translateY(72px)}
   .cinemaMarquee>div{animation:none}
 }
+
+/* Compact editorial rhythm: shorter transitions, clearer hierarchy, and no dead space. */
+.aboutSection{padding:64px 0 24px}
+.workSection{padding:40px 0 30px}
+.skillsSection{padding:46px 0 30px}
+.processSection{padding:38px 0 64px}
+
+.sectionLabel{margin-bottom:18px;white-space:nowrap}
+.sectionLabel:after{content:"";display:inline-block;width:58px;height:1px;margin:0 0 3px 15px;background:var(--blue)}
+.workIntro{
+  grid-template-columns:minmax(0,1.22fr) minmax(310px,.58fr);
+  align-items:center;
+  gap:clamp(26px,4vw,58px);
+  margin-bottom:26px;
+}
+.workIntro .sectionLabel{margin-bottom:0}
+.skillsHead,.processHead{
+  grid-template-columns:minmax(0,1.22fr) minmax(310px,.58fr);
+  align-items:center;
+  gap:clamp(26px,4vw,58px);
+}
+.workIntro h2,.skillsHead h2,.processHead h2{
+  font-size:clamp(50px,4.65vw,74px);
+  line-height:.88;
+  letter-spacing:-.05em;
+}
+.workIntro p,.skillsHead p,.processHead p{
+  position:relative;
+  max-width:410px;
+  align-self:center;
+  padding:16px 19px 16px 23px;
+  border:1px solid rgba(51,70,77,.13);
+  border-radius:10px;
+  background:rgba(255,255,255,.58);
+  color:var(--soft-ink);
+  font-size:14px;
+  font-weight:500;
+  line-height:1.6;
+  letter-spacing:-.018em;
+  box-shadow:0 9px 24px rgba(51,70,77,.05);
+}
+.workIntro p:before,.skillsHead p:before,.processHead p:before{
+  content:"";
+  position:absolute;
+  top:14px;
+  bottom:14px;
+  left:0;
+  width:4px;
+  border-radius:0 5px 5px 0;
+  background:var(--blue);
+}
+.workIntro p:after,.skillsHead p:after,.processHead p:after{
+  content:"";
+  position:absolute;
+  top:-8px;
+  right:18px;
+  width:42px;
+  height:7px;
+  border-radius:8px 8px 0 0;
+  background:var(--buttermilk);
+}
+
+.capabilityStrip{margin-top:24px}
+.capabilityStrip article{min-height:90px;padding:15px}
+.toolAccordion{margin-top:26px}
+.serviceList{margin-top:26px}
+.processRail{margin-top:24px}
+
+@media(max-width:1050px){
+  .skillsHead,.processHead{grid-template-columns:1fr minmax(270px,.62fr);gap:26px}
+  .workIntro{grid-template-columns:1fr minmax(270px,.62fr);gap:26px}
+  .workIntro h2,.skillsHead h2,.processHead h2{font-size:clamp(48px,6.5vw,66px)}
+}
+
+@media(max-width:760px){
+  .aboutSection{padding:52px 0 22px}
+  .workSection{padding:34px 0 24px}
+  .skillsSection{padding:40px 0 26px}
+  .processSection{padding:34px 0 54px}
+  .sectionLabel{margin-bottom:15px}
+  .sectionLabel:after{width:42px;margin-left:11px}
+  .workIntro,.skillsHead,.processHead{grid-template-columns:1fr;gap:18px}
+  .workIntro{margin-bottom:22px}
+  .workIntro h2,.skillsHead h2,.processHead h2{font-size:clamp(44px,12vw,60px);line-height:.9}
+  .workIntro p,.skillsHead p,.processHead p{max-width:none;padding:15px 16px 15px 20px;font-size:14px;line-height:1.55}
+  .workIntro p:before,.skillsHead p:before,.processHead p:before{top:14px;bottom:14px;width:4px}
+  .workIntro p:after,.skillsHead p:after,.processHead p:after{right:15px;width:36px;height:6px;top:-6px}
+  .capabilityStrip{margin-top:20px}
+  .toolAccordion,.serviceList,.processRail{margin-top:20px}
+}
