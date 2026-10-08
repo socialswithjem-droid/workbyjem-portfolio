@@ -349,3 +349,28 @@ footer h2 em{font-family:"Oskon 90s",var(--sans);font-style:normal;font-weight:4
   .capabilityStrip{margin-top:20px}
   .toolAccordion,.serviceList,.processRail{margin-top:20px}
 }
+
+/* Light hero wash: butter yellow fades into off-white with a quiet blue lift. */
+.cinemaHero{
+  background:
+    radial-gradient(circle at 82% 19%,rgba(193,219,232,.5) 0%,rgba(193,219,232,0) 31%),
+    linear-gradient(118deg,var(--paper) 0%,var(--offwhite) 51%,var(--buttermilk) 100%);
+}
+.heroGlow{
+  right:-12%;
+  bottom:-38%;
+  width:66vw;
+  height:66vw;
+  background:var(--buttermilk);
+  filter:blur(150px);
+  opacity:.5;
+}
+
+@media(max-width:760px){
+  .cinemaHero{
+    background:
+      radial-gradient(circle at 78% 34%,rgba(193,219,232,.42) 0%,rgba(193,219,232,0) 33%),
+      linear-gradient(150deg,var(--paper) 0%,var(--offwhite) 48%,var(--buttermilk) 100%);
+  }
+  .heroGlow{right:-34%;bottom:-18%;width:105vw;height:105vw;opacity:.38}
+}
