@@ -98,12 +98,6 @@ footer{background:var(--offwhite)}
   .processRail h3{margin-top:18px}
 }
 
-/* Responsive fitting fallbacks keep the 1440px desktop websites fully inside the laptop. */
-@media(max-width:420px){.laptopScreen iframe.desktopSite{transform:scale(.171)!important}}
-@media(min-width:421px) and (max-width:520px){.laptopScreen iframe.desktopSite{transform:scale(.245)!important}}
-@media(min-width:521px) and (max-width:640px){.laptopScreen iframe.desktopSite{transform:scale(.31)!important}}
-@media(min-width:641px) and (max-width:760px){.laptopScreen iframe.desktopSite{transform:scale(.375)!important}}
-
 /* Balanced accent pass: burgundy is reserved for CTAs and key brand moments. */
 .topbar nav a{color:var(--ink)}
 .cinemaHero h1 em,.heroEditorial>p,.editorialIndex,.editorialSignature,.aboutCopy .lead,.projectCopy li,.honestyNote b,.frameLabel,.toolPanel h3,.toolPanel span,.serviceList h3,.processRail h3,footer>p,.footerLine{color:var(--ink)}
@@ -258,6 +252,44 @@ footer h2 em{font-family:"Oskon 90s",var(--sans);font-style:normal;font-weight:4
   .orbitLabelEmail{transform:translate(-50%,-50%)}
   .orbitLabelWeb{transform:translate(-50%,-50%) translateY(72px)}
   .cinemaMarquee>div{animation:none}
+}
+
+/* Device-safe line arrows: inline SVG prevents mobile emoji substitution. */
+.lineArrow{
+  width:14px;
+  height:14px;
+  display:inline-block;
+  flex:0 0 auto;
+  overflow:visible;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.55;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.talk,.heroFooter a,.projectCopy>a,.contactActions a,.footerLine a{display:inline-flex;align-items:center}
+.talk .lineArrow{margin-left:7px;color:var(--walnut)}
+.heroFooter a,.footerLine a{gap:7px}
+.heroFooter .lineArrow,.footerLine .lineArrow{width:12px;height:12px}
+.projectCopy>a{gap:8px}
+.projectCopy>a .lineArrow{margin-left:0;color:var(--walnut)}
+
+/* Fit one complete 1440 x 900 desktop viewport to the exact laptop screen size. */
+.laptopScreen{
+  overflow:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+}
+.laptopScreen iframe.desktopSite{
+  position:absolute;
+  inset:0 auto auto 0;
+  width:1440px;
+  height:900px;
+  display:block;
+  border:0;
+  background:#fff;
+  transform:scale(var(--site-scale,.1));
+  transform-origin:top left;
 }
 
 /* Compact editorial rhythm: shorter transitions, clearer hierarchy, and no dead space. */

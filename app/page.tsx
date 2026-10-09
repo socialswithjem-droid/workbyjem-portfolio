@@ -2,7 +2,15 @@
 
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
-const Arrow = () => <span aria-hidden="true">↗</span>;
+type ArrowDirection = "upRight" | "down" | "up";
+function Arrow({ direction = "upRight" }: { direction?: ArrowDirection }) {
+  const path = direction === "down"
+    ? "M9 3v12M4.5 10.5 9 15l4.5-4.5"
+    : direction === "up"
+      ? "M9 15V3M4.5 7.5 9 3l4.5 4.5"
+      : "M4 14 14 4M7 4h7v7";
+  return <svg className={`lineArrow lineArrow-${direction}`} viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d={path} /></svg>;
+}
 type IconName = "marketing" | "crm" | "web" | "ai" | "email";
 function Icon({ name }: { name: IconName }) {
   if (name === "marketing") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 13 10-5v10L4 13Z"/><path d="M14 10h3a3 3 0 0 1 0 6h-3M6 14l1.5 5H11l-2-6"/></svg>;
@@ -36,17 +44,21 @@ function LiveSite({ src, title }: { src: string; title: string }) {
     const screen = iframe?.parentElement;
     if (!iframe || !screen) return;
     const fitDesktopSite = () => {
-      const scale = Math.min(screen.clientWidth / 1440, screen.clientHeight / 900);
-      iframe.style.transform = `scale(${scale})`;
+      const availableWidth = Math.max(0, screen.clientWidth - 2);
+      const availableHeight = Math.max(0, screen.clientHeight - 2);
+      const scale = Math.min(availableWidth / 1440, availableHeight / 900);
+      iframe.style.setProperty("--site-scale", String(scale));
     };
     fitDesktopSite();
     const frame = requestAnimationFrame(fitDesktopSite);
     const observer = new ResizeObserver(fitDesktopSite);
     observer.observe(screen);
+    iframe.addEventListener("load", fitDesktopSite);
     window.addEventListener("resize", fitDesktopSite);
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
+      iframe.removeEventListener("load", fitDesktopSite);
       window.removeEventListener("resize", fitDesktopSite);
     };
   }, []);
@@ -65,7 +77,7 @@ export default function Home() {
           <div className="heroCopy"><p className="kicker"><span /> DIGITAL MARKETING · CRM · WEB SUPPORT</p><h1 id="hero-title"><span>I TURN</span><strong>IDEAS</strong><em>INTO IMPACT.</em></h1><p className="heroText">Digital and email marketing shaped into clear campaigns, useful websites, organized CRM workflows, and practical AI-assisted experiences.</p><div className="heroActions"><a className="primaryBtn" href="#work">Explore my work <Arrow /></a><a className="ghostBtn" href="#about">Meet Jemarie</a></div></div>
           <div className="heroEditorial" aria-label="Jemarie's digital marketing and web services"><div className="editorialOrb" aria-hidden="true" /><div className="orbit orbitOne" aria-hidden="true" /><div className="orbit orbitTwo" aria-hidden="true" /><div className="orbitalWords" aria-hidden="true"><b className="orbitLabel orbitLabelDigital">DIGITAL</b><b className="orbitLabel orbitLabelEmail">EMAIL</b><b className="orbitLabel orbitLabelWeb">WEB</b></div><p>Clear ideas.<br />Useful systems.<br />Thoughtful execution.</p></div>
         </div>
-        <div className="heroFooter"><span>BASED IN THE PHILIPPINES · AVAILABLE REMOTELY</span><a href="#about">SCROLL TO DISCOVER ↓</a></div>
+        <div className="heroFooter"><span>BASED IN THE PHILIPPINES · AVAILABLE REMOTELY</span><a href="#about">SCROLL TO DISCOVER <Arrow direction="down" /></a></div>
       </section>
       <div className="cinemaMarquee" aria-label="Areas of work"><div>{Array.from({ length: 4 }, (_, set) => marqueeItems.map((item) => <Fragment key={`${set}-${item}`}><span>{item}</span><i aria-hidden="true" /></Fragment>))}</div></div>
 
@@ -100,7 +112,7 @@ export default function Home() {
 
       <section className="processSection reveal"><div className="sectionLabel"><span>04</span> / HOW I WORK</div><div className="processHead"><h2>CLEAR PROCESS.<br /><em>USEFUL OUTCOMES.</em></h2><p>Four focused steps keep the goal visible—from understanding the need to testing the final experience.</p></div><div className="processRail"><article><span>01</span><h3>Understand</h3><p>Clarify the goal, audience, workflow, and current problem.</p></article><article><span>02</span><h3>Shape</h3><p>Turn ideas into a focused plan with realistic scope.</p></article><article><span>03</span><h3>Build</h3><p>Use the right marketing, CRM, web, and AI tools.</p></article><article><span>04</span><h3>Test</h3><p>Review the experience, refine details, and communicate clearly.</p></article></div></section>
 
-      <footer id="contact"><div className="contactGlow" aria-hidden="true" /><div className="contactLines" aria-hidden="true" /><div className="sectionLabel"><span>05</span> / LET&apos;S CONNECT</div><h2>HAVE A ROLE<br />OR <em>IDEA?</em></h2><p>Let&apos;s turn it into something clear, useful, and ready to move forward.</p><div className="contactActions"><a href="mailto:socialswithjem@gmail.com">Email Jemarie <Arrow /></a><a href="https://wa.me/639926348536" target="_blank" rel="noreferrer">WhatsApp <Arrow /></a></div><div className="footerLine"><span>© 2026 JEMARIE ADAME</span><span>DIGITAL MARKETING · EMAIL · CRM · WEB</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+      <footer id="contact"><div className="contactGlow" aria-hidden="true" /><div className="contactLines" aria-hidden="true" /><div className="sectionLabel"><span>05</span> / LET&apos;S CONNECT</div><h2>HAVE A ROLE<br />OR <em>IDEA?</em></h2><p>Let&apos;s turn it into something clear, useful, and ready to move forward.</p><div className="contactActions"><a href="mailto:socialswithjem@gmail.com">Email Jemarie <Arrow /></a><a href="https://wa.me/639926348536" target="_blank" rel="noreferrer">WhatsApp <Arrow /></a></div><div className="footerLine"><span>© 2026 JEMARIE ADAME</span><span>DIGITAL MARKETING · EMAIL · CRM · WEB</span><a href="#top">BACK TO TOP <Arrow direction="up" /></a></div></footer>
     </main>
   );
 }
