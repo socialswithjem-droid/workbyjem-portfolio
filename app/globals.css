@@ -355,6 +355,8 @@ footer h2 em{font-family:"Oskon 90s",var(--sans);font-style:normal;font-weight:4
 
 .capabilityStrip{margin-top:24px}
 .capabilityStrip article{min-height:90px;padding:15px}
+.capabilityStrip{grid-template-columns:repeat(5,minmax(0,1fr))}
+.serviceList article:last-child{grid-column:auto}
 .toolAccordion{margin-top:26px}
 .serviceList{margin-top:26px}
 .processRail{margin-top:24px}
@@ -363,6 +365,8 @@ footer h2 em{font-family:"Oskon 90s",var(--sans);font-style:normal;font-weight:4
   .skillsHead,.processHead{grid-template-columns:1fr minmax(270px,.62fr);gap:26px}
   .workIntro{grid-template-columns:1fr minmax(270px,.62fr);gap:26px}
   .workIntro h2,.skillsHead h2,.processHead h2{font-size:clamp(48px,6.5vw,66px)}
+  .capabilityStrip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .capabilityStrip article:last-child{grid-column:1/-1}
 }
 
 @media(max-width:760px){
@@ -380,6 +384,11 @@ footer h2 em{font-family:"Oskon 90s",var(--sans);font-style:normal;font-weight:4
   .workIntro p:after,.skillsHead p:after,.processHead p:after{right:15px;width:36px;height:6px;top:-6px}
   .capabilityStrip{margin-top:20px}
   .toolAccordion,.serviceList,.processRail{margin-top:20px}
+}
+
+@media(max-width:420px){
+  .capabilityStrip{grid-template-columns:1fr}
+  .capabilityStrip article:last-child{grid-column:auto}
 }
 
 /* Light hero wash: butter yellow fades into off-white with a quiet blue lift. */

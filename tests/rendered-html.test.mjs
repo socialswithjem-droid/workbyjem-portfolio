@@ -14,6 +14,8 @@ test("portfolio includes its key identity and credited projects", async () => {
   assert.match(page, /https:\/\/propsearch\.com\.au\//);
   assert.match(page, /original design and build belong to others/i);
   assert.match(page, /Built transparently with AI/);
+  assert.match(page, /SEO & AI search foundations/);
+  assert.match(page, /SEO \+ AI SEARCH/);
 });
 
 test("portfolio is configured for Cloudflare Workers", async () => {
@@ -53,6 +55,8 @@ test("portfolio declares one canonical domain and redirects www", async () => {
   assert.match(layout, /canonical: "\/"/);
   assert.match(layout, /"@type": "Person"/);
   assert.match(layout, /"@type": "WebSite"/);
+  assert.match(layout, /Search engine optimization/);
+  assert.match(layout, /Answer engine optimization/);
   assert.match(worker, /url\.hostname === "www\.socialswithjem\.site"/);
   assert.match(worker, /Response\.redirect\(url\.toString\(\), 301\)/);
 });

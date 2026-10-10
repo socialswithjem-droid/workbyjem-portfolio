@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const siteUrl = "https://socialswithjem.site";
-const title = "Jemarie Adame | Digital Marketing, CRM & Web Support";
-const description = "Jemarie Adame's portfolio: digital and email marketing, GoHighLevel CRM support, WordPress websites, landing pages, and transparent AI-assisted web projects.";
+const title = "Jemarie Adame | Digital Marketing, SEO, CRM & Web Support";
+const description = "Jemarie Adame offers digital and email marketing, foundational SEO and AI search readiness, GoHighLevel CRM support, WordPress websites, and landing pages.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -54,6 +54,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         knowsAbout: [
           "Digital marketing",
           "Email marketing",
+          "Search engine optimization",
+          "Answer engine optimization",
           "GoHighLevel CRM",
           "WordPress",
           "Landing pages",
