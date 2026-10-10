@@ -10,9 +10,9 @@ test("portfolio includes its key identity and credited projects", async () => {
   assert.match(page, /Jemarie/);
   assert.match(page, /BotikaPOS/);
   assert.match(page, /https:\/\/medipos-eight\.vercel\.app/);
-  assert.match(page, /Prop Search/);
+  assert.match(page, /PROPSEARCH/);
   assert.match(page, /https:\/\/propsearch\.com\.au\//);
-  assert.match(page, /original website design and build were created by others/i);
+  assert.match(page, /original design and build belong to others/i);
   assert.match(page, /Built transparently with AI/);
 });
 
@@ -29,4 +29,16 @@ test("portfolio is configured for Cloudflare Workers", async () => {
   assert.match(packageJson, /"deploy:vinext"/);
   assert.match(viteConfig, /@cloudflare\/vite-plugin/);
   assert.match(viteConfig, /@vinext\/cloudflare/);
+});
+
+test("portfolio publishes crawl instructions and a sitemap", async () => {
+  const [robots, sitemap] = await Promise.all([
+    readFile(projectFile("public/robots.txt"), "utf8"),
+    readFile(projectFile("public/sitemap.xml"), "utf8"),
+  ]);
+
+  assert.match(robots, /User-agent: \*/);
+  assert.match(robots, /Allow: \//);
+  assert.match(robots, /Sitemap: https:\/\/socialswithjem\.site\/sitemap\.xml/);
+  assert.match(sitemap, /<loc>https:\/\/socialswithjem\.site\/<\/loc>/);
 });
