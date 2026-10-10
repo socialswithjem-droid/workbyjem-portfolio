@@ -42,3 +42,17 @@ test("portfolio publishes crawl instructions and a sitemap", async () => {
   assert.match(robots, /Sitemap: https:\/\/socialswithjem\.site\/sitemap\.xml/);
   assert.match(sitemap, /<loc>https:\/\/socialswithjem\.site\/<\/loc>/);
 });
+
+test("portfolio declares one canonical domain and redirects www", async () => {
+  const [layout, worker] = await Promise.all([
+    readFile(projectFile("app/layout.tsx"), "utf8"),
+    readFile(projectFile("worker/index.ts"), "utf8"),
+  ]);
+
+  assert.match(layout, /metadataBase: new URL\(siteUrl\)/);
+  assert.match(layout, /canonical: "\/"/);
+  assert.match(layout, /"@type": "Person"/);
+  assert.match(layout, /"@type": "WebSite"/);
+  assert.match(worker, /url\.hostname === "www\.socialswithjem\.site"/);
+  assert.match(worker, /Response\.redirect\(url\.toString\(\), 301\)/);
+});
