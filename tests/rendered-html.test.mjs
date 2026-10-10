@@ -45,7 +45,7 @@ test("portfolio publishes crawl instructions and a sitemap", async () => {
   assert.match(sitemap, /<loc>https:\/\/socialswithjem\.site\/<\/loc>/);
 });
 
-test("portfolio declares one canonical domain and redirects www", async () => {
+test("portfolio declares one canonical domain without a host redirect loop", async () => {
   const [layout, worker] = await Promise.all([
     readFile(projectFile("app/layout.tsx"), "utf8"),
     readFile(projectFile("worker/index.ts"), "utf8"),
@@ -57,6 +57,6 @@ test("portfolio declares one canonical domain and redirects www", async () => {
   assert.match(layout, /"@type": "WebSite"/);
   assert.match(layout, /Search engine optimization/);
   assert.match(layout, /Answer engine optimization/);
-  assert.match(worker, /url\.hostname === "www\.socialswithjem\.site"/);
-  assert.match(worker, /Response\.redirect\(url\.toString\(\), 301\)/);
+  assert.doesNotMatch(worker, /url\.hostname === "www\.socialswithjem\.site"/);
+  assert.doesNotMatch(worker, /Response\.redirect\(url\.toString\(\), 301\)/);
 });
